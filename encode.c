@@ -29,7 +29,8 @@ int main(int argc, char *argv[]) {
   }
   // read in
   uint8_t curr_sym=0;
- 
+  
+  while(read_sym(infile,&curr_sym)); 
   TrieNode *root = trie_create();
   
   close(infile);
