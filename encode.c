@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <math.h>
 int main(int argc, char *argv[]) {
   int infile = STDIN_FILENO;
   int outfile = STDOUT_FILENO;
@@ -41,7 +42,7 @@ int main(int argc, char *argv[]) {
     if (next_node != NULL) {
       prev_node = curr_node;
       curr_node = next_node;
-       //printf("%c\n",curr_sym);
+      // printf("%c\n",curr_sym);
     } else {
       buffer_pair(outfile, curr_node->code, curr_sym, log2(next_code) + 1);
       curr_node->children[curr_sym] = trie_node_create(next_code);

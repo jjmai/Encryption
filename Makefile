@@ -1,13 +1,19 @@
-CFLAGS = -Wpedantic -Werror -Wall -Wextra -std=c99
+CFLAGS = -Wall -std=c99
 CC = clang $(CFLAGS)
 
 all		:	encode 
 
-encode		:	encode.o
-		%(CC) -o encode encode.o -lm -g
+encode		:	encode.o trie.o io.o
+		$(CC) -o encode encode.o trie.o io.o -lm -g
 
 encode.o	:	encode.c
-		%(CC) -c encode.c
+		$(CC) -c encode.c
+
+trie.o		:	trie.c
+		$(CC) -c trie.c
+
+io.o		:	io.c
+		$(CC) -c io.c
 
 clean		:
 		rm -rf *.o encode infer-out
